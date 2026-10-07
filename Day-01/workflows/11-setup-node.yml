@@ -1,0 +1,42 @@
+# 11 - actions/setup-node
+# Installs a specific Node.js version on the runner and puts it on PATH.
+# The same pattern exists for other languages:
+#   actions/setup-python, actions/setup-java, actions/setup-go, etc.
+
+name: 11 - Setup Node
+
+on: workflow_dispatch
+
+jobs:
+  node-versions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v5
+
+      - name: Install Node.js 20
+        uses: actions/setup-node@v6      # current major version
+        with:
+          node-version: '20'
+          cache: 'npm'                   # cache npm downloads to speed up future runs
+
+          # WHERE is the lockfile? `cache` needs one to build its cache key.
+          # By default setup-node only looks for package-lock.json in the repo ROOT.
+          # Our app lives in sample-app/, so we MUST point at it explicitly:
+          cache-dependency-path: 'sample-app/package-lock.json'
+          #
+          # Other common values:
+          #   cache-dependency-path: 'package-lock.json'      # app at the repo root
+          #   cache-dependency-path: '**/package-lock.json'   # monorepo: every lockfile
+          #   cache-dependency-path: |                        # or list several
+          #     frontend/package-lock.json
+          #     backend/package-lock.json
+          #
+          # NOTE: the path is relative to the repo ROOT, and the file must exist
+          # AFTER checkout — that's why actions/checkout runs before this step.
+          # No lockfile at that path => "Dependencies lock file is not found".
+
+      - name: Confirm the versions
+        run: |
+          node --version
+          npm --version
