@@ -3,7 +3,7 @@
 
 > Go from *"I've never written a line of YAML"* to *building real, multi-job CI pipelines* with GitHub Actions — all from the browser, no local setup required.
 
-This is the teaching script **and** the self-study guide for the video series (channel **LearnWithMithran**). Every concept below has:
+Every concept below has:
 
 1. **What it is** — a plain-English explanation of the keyword.
 2. **A tiny example** — a small, focused YAML file you can copy-paste and run.
