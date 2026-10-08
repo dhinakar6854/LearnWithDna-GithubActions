@@ -25,8 +25,8 @@ jobs:
         run: |
           Write-Host "OS is $env:RUNNER_OS"     # -> Windows
 
-  macos-job:
-    runs-on: macos-latest       # needed for iOS/macOS builds (uses more minutes)
-    steps:
-      - name: Inspect the macOS runner
-        run: echo "OS is $RUNNER_OS"            # -> macOS
+  # macos-job:
+  # runs-on: macos-latest       # needed for iOS/macOS builds (uses more minutes)
+  #  steps:
+  #    - name: Inspect the macOS runner
+  #     run: echo "OS is $RUNNER_OS"            # -> macOS
