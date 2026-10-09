@@ -8,7 +8,23 @@ name: 12 - Env Scopes
 on: workflow_dispatch
 
 env:
-  NAME: Mithran
+  NAME: Dina
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Uses workflow + job env
+        run: |
+          echo "my name is $NAME"
+
+---
+name: 12 - Env Scopes
+
+on: workflow_dispatch
+
+env:
+  NAME: Dina
 
 jobs:
   job1:
