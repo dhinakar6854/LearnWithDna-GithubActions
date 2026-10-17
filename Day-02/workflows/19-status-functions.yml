@@ -65,7 +65,7 @@ jobs:
       - name: Cleanup / reporting
         run: |
           echo "🧹 Cleanup always runs."
-          echo "Upstream build result was: ${{ needs.build.result }}"
+          echo "Upstream build result was: ${{ needs.job1.result }}"
 
   # Combining a status function with your own condition is the realistic case:
   # "alert, but only for the main branch".
